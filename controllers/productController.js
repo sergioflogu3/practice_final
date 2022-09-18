@@ -3,7 +3,6 @@ const catchAsync = require('../utils/catchAsync');
 
 exports.getAllProducts = catchAsync(async (req, res) => {
     const products = await Product.find();
-
     res.status(200).json({
         status: "success",
         timeOfRequest: req.requestTime,
@@ -44,7 +43,7 @@ exports.updatedProductById = catchAsync(async (req, res) => {
     await Product.findOneAndUpdate(req.params.id, req.body);
     res.status(201).json({
         status: "success",
-        message: 'Archivo modificado con exito'
+        message: 'Producto modificado con exito'
     });
 })
 
@@ -53,11 +52,11 @@ exports.deleteProductById = catchAsync(async (req, res) => {
     if (product){
         res.status(204).json({
             status: "success",
-            message: 'Archivo eliminado con exito'
+            message: 'Producto eliminado con exito'
         });
     } else {
         res.status(404).json({
             status: "not found",
         });
     }
-})
+});
